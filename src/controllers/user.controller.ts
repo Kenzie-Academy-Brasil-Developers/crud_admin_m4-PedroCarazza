@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UserRead, UserReturn } from "../interfaces/user.interface";
+import { UserReadAll, UserReturn } from "../interfaces/user.interface";
 import { createUserService, readAllUsersService, readCoursesByIdService } from "../services/user.service";
 
 
@@ -10,7 +10,7 @@ export const createUserController = async (req: Request, res: Response): Promise
 };
 
 export const readAllUsersController = async (req: Request, res: Response): Promise<Response> => {
-    const users = await readAllUsersService;
+    const users: UserReadAll = await readAllUsersService();
 
     return res.status(200).json(users)
 }

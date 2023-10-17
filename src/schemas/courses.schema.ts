@@ -7,3 +7,5 @@ export const courseSchema = z.object({
 });
 
 export const courseCreateSchema = courseSchema.omit({id: true});
+
+export const courseReadSchema = courseSchema.array()
