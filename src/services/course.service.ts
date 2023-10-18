@@ -1,6 +1,7 @@
 import format from "pg-format";
 import { Course, CourseCreate, CourseRead, CourseResult } from "../interfaces/course.interface";
 import { client } from "../database";
+import { courseSchema } from "../schemas/courses.schema";
 
 export const createCourseService = async (data: CourseCreate): Promise<Course> => {
       
@@ -11,8 +12,8 @@ export const createCourseService = async (data: CourseCreate): Promise<Course> =
     );
   
     const query: CourseResult = await client.query(queryFormat);
-  
-    return query.rows[0];
+
+    return courseSchema.parse(query.rows[0]);
   };
   
 export const readAllCoursesService = async (): Promise<CourseRead> => {

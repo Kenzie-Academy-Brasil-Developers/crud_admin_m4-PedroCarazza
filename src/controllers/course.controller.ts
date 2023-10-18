@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { Course, CourseRead } from "../interfaces/course.interface";
 import { createCourseService, disableUserInCourseService, enrollUserInCourseService, readAllCoursesService, readUsersinCourseService } from "../services/course.service";
-import { UserRead } from "../interfaces/user.interface";
 
 export const createCourseController = async (req: Request, res: Response): Promise<Response> => {
     const course: Course = await createCourseService(req.body);

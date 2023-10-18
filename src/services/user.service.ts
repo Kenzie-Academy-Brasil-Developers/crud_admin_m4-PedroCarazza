@@ -48,7 +48,7 @@ export const readCoursesByIdService = async (userId: string) => {
 
   const queryResult: UserResult = await client.query(queryString, [userId]);
 
-  if (queryResult.rowCount === 0) {
+  if (!queryResult.rowCount) {
     throw new AppError("No courses linked to this user", 404);
   }
 
